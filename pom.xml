@@ -48,6 +48,16 @@
 			</plugin>
 
 			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>3.5.1</version>
+				<configuration>
+					<source>1.7</source>
+					<target>1.7</target>
+				</configuration>
+			</plugin>
+
+			<plugin>
 				<groupId>external.atlassian.jgitflow</groupId>
 				<artifactId>jgitflow-maven-plugin</artifactId>
 				<version>1.0-m5.1</version>
@@ -55,7 +65,7 @@
 					<scmCommentPrefix>[jgitflow]</scmCommentPrefix>
 					<pushFeatures>true</pushFeatures>
 					<featureRebase>true</featureRebase>
-					<squash>true</squash>
+					<squash>false</squash>
 					<pushHotfixes>true</pushHotfixes>
 					<!-- see goals wiki page for configuration options -->
 				</configuration>
