@@ -55,7 +55,7 @@
 					<scmCommentPrefix>[jgitflow]</scmCommentPrefix>
 					<pushFeatures>true</pushFeatures>
 					<featureRebase>true</featureRebase>
-					<squash>true</squash>
+					<squash>false</squash>
 					<pushHotfixes>true</pushHotfixes>
 					<!-- see goals wiki page for configuration options -->
 				</configuration>
