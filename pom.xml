@@ -18,6 +18,7 @@
 		<url>http://www.spring.io</url>
 	</organization>
 	<properties>
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<main.basedir>${basedir}/../..</main.basedir>
 	</properties>
 	<dependencies>
@@ -51,6 +52,11 @@
 				<artifactId>jgitflow-maven-plugin</artifactId>
 				<version>1.0-m5.1</version>
 				<configuration>
+					<scmCommentPrefix>[jgitflow]</scmCommentPrefix>
+					<pushFeatures>true</pushFeatures>
+					<featureRebase>true</featureRebase>
+					<squash>true</squash>
+					<pushHotfixes>true</pushHotfixes>
 					<!-- see goals wiki page for configuration options -->
 				</configuration>
 			</plugin>
