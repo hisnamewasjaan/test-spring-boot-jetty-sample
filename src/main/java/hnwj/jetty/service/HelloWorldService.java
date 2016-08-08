@@ -25,8 +25,15 @@ public class HelloWorldService {
 	@Value("${name:World}")
 	private String name;
 
+	@Value("${other}")
+	private String other;
+
 	public String getHelloMessage() {
 		return "Hello " + this.name;
+	}
+
+	public String getOtherHelloMessage() {
+		return "Welcome " + this.other;
 	}
 
 }
