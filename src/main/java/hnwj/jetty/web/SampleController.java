@@ -17,13 +17,21 @@
 package hnwj.jetty.web;
 
 import hnwj.jetty.service.HelloWorldService;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
 public class SampleController {
+
+	private final Logger log = LoggerFactory.getLogger(this.getClass());
+
+	@Value("${app.description}")
+	private String description;
 
 	@Autowired
 	private HelloWorldService helloWorldService;
@@ -32,5 +40,17 @@ public class SampleController {
 	@ResponseBody
 	public String helloWorld() {
 		return this.helloWorldService.getHelloMessage();
+	}
+
+	@GetMapping("/other")
+	@ResponseBody
+	public String helloOther() {
+		log.debug("helloOther - debug");
+		log.info("helloOther - info");
+		log.warn("helloOther - warn");
+		log.error("helloOther - error");
+		return String.format("<html><head><title>%s</title></head><body>%s</body></html>",
+				description,
+				this.helloWorldService.getOtherHelloMessage()) ;
 	}
 }
