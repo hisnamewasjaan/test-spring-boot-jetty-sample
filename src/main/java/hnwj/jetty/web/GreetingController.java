@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.concurrent.atomic.AtomicLong;
 
 /**
+ * Simple REST controller mapped to '/greeting'
  */
 @RestController
 public class GreetingController {
