@@ -68,6 +68,9 @@
     </h2>
 </noscript>
 <div>
+    <p>Pressing connect will create a STOMP wrappered SockJS connection to '/hello_stomp' on the server</p>
+    <p>The STOMP client will subscribe to the topics /topic/greetings and /topic/goodbyes</p>
+    <p>The STOMP client will send messages to /app/hello and /app/bye</p>
     <div>
         <button id="connect" onclick="connect();">Connect</button>
         <button id="disconnect" disabled="disabled" onclick="disconnect();">Disconnect</button>

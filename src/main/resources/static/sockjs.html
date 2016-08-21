@@ -66,6 +66,9 @@
     </h2>
 </noscript>
 <div>
+    <p>Pressing 'Connect' will open a SockJS connection to '/hello_sockjs' on the server </p>
+    <p>On the server a websocket (SockJS) handler is registered with the '/hello_sockjs' uri.
+        The handler receives messages and sends back messages on the same connection</p>
     <div>
         <button id="connect" onclick="connect();">Connect</button>
         <button id="disconnect" disabled="disabled" onclick="disconnect();">Disconnect</button>
