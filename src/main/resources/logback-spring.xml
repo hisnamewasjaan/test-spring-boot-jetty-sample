@@ -28,6 +28,7 @@
         </root>
 
         <logger name="org.apache.coyote" level="DEBUG"></logger>
+        <logger name="org.thymeleaf" level="DEBUG"></logger>
         <logger name="org.apache.tomcat.websocket" level="DEBUG"></logger>
         <logger name="org.apache.activemq.broker" level="DEBUG"></logger>
         <logger name="org.springframework.web" level="INFO"></logger>

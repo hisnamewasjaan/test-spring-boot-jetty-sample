@@ -1,24 +1,15 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
-<head>
-    <meta charset="UTF-8"/>
-    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
-    <title>Sample</title>
-</head>
+<head th:replace="fragments/header :: head"></head>
 <body>
-<p>Hi</p>
-<!--/*@thymesVar id="name" type="java.lang.String"*/-->
-<p th:text="'Hello, ' + ${name} + '!'" />
 
-<ul>
-    <li><a href="/sample">index</a></li>
-    <li><a href="/sample/hello">/sample/hello</a><p>Other mapping returning the result of a service call</p></li>
-    <li><a href="/other/hello">other/hello</a><p>Other mapping returning the result of a service call</p></li>
-    <li><a href="/sockjs.html">sockjs</a><p>Shows use of websockets using sockjs</p></li>
-    <li><a href="/stomp.html">stomp</a><p>Shows use of websockets over STOMP</p></li>
-    <li><a href="/greeting">greeting</a></li>
-    <li><a href="/weather">weather</a><p>Calls a SOAP webservice to get weather forecast for a given zip code</p></li>
-    <li><a href="/jms/send">jms/send</a><p>Hits an endpoint that will sends a JMS (ActiveMQ) message, receive it, and log the message</p></li>
-</ul>
+<nav class="navbar navbar-inverse" th:replace="fragments/navbar"></nav>
+
+
+<!--/*@thymesVar id="name" type="java.lang.String"*/-->
+<p th:text="'Hellooooooo, ' + ${name} + '!'" >Hi</p>
+
+
+<div th:replace="fragments/links">replace links</div>
 </body>
 </html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+</head>
+<body>
+
+<div th:fragment="links">
+    <ul>
+        <li><a href="/sample">index</a></li>
+        <li><a href="/sample/hello">/sample/hello</a>
+            <p>Other mapping returning the result of a service call</p></li>
+        <li><a href="/other/hello">other/hello</a>
+            <p>Other mapping returning the result of a service call</p></li>
+        <li><a href="/sockjs">sockjs</a>
+            <p>Shows use of websockets using sockjs</p></li>
+        <li><a href="/stomp">stomp</a>
+            <p>Shows use of websockets over STOMP</p></li>
+        <li><a href="/greeting">greeting</a></li>
+        <li><a href="/weather">weather</a>
+            <p>Calls a SOAP webservice to get weather forecast for a given zip code</p></li>
+        <li><a href="/jms/send">jms/send</a>
+            <p>Hits an endpoint that will sends a JMS (ActiveMQ) message, receive it, and log the message</p></li>
+    </ul>
+</div>
+</body>
+</html>

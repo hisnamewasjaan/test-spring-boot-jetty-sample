@@ -7,15 +7,15 @@
 		<artifactId>spring-boot-starter-parent</artifactId>
 		<version>1.4.0.RELEASE</version>
 	</parent>
-	<artifactId>test-spring-boot-jetty</artifactId>
+	<artifactId>spring-boot-app</artifactId>
 	<groupId>hnwj</groupId>
-	<name>Spring Boot Jetty Sample</name>
-	<description>Spring Boot Jetty Sample</description>
+	<name>App</name>
+	<description></description>
 	<version>1.6-SNAPSHOT</version>
-	<url>http://projects.spring.io/spring-boot/</url>
+	<url></url>
 	<organization>
-		<name>Pivotal Software, Inc.</name>
-		<url>http://www.spring.io</url>
+		<name></name>
+		<url></url>
 	</organization>
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -35,6 +35,15 @@
 					<!--<artifactId>spring-boot-starter-tomcat</artifactId>-->
 				<!--</exclusion>-->
 			<!--</exclusions>-->
+		</dependency>
+		<!--<dependency>-->
+			<!--<groupId>org.springframework.boot</groupId>-->
+			<!--<artifactId>spring-boot-starter-security</artifactId>-->
+		<!--</dependency>-->
+		<dependency>
+			<groupId>org.webjars</groupId>
+			<artifactId>bootstrap</artifactId>
+			<version>3.3.7</version>
 		</dependency>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>

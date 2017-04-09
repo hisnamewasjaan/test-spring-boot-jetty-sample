@@ -27,10 +27,16 @@ public class SampleController {
 	@Autowired
 	private HelloWorldService helloWorldService;
 
+//	@GetMapping("/sample/hello")
+//	@ResponseBody
+//	public String helloWorld() {
+//		return this.helloWorldService.getHelloMessage();
+//	}
+
 	@GetMapping("/sample/hello")
-	@ResponseBody
-	public String helloWorld() {
-		return this.helloWorldService.getHelloMessage();
+	public String helloWorld(Model model) {
+		model.addAttribute("helloMessage", this.helloWorldService.getHelloMessage());
+		return "sampleHello";
 	}
 
 	@GetMapping("/other/hello")
