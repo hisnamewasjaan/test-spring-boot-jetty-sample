@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/header :: head"></head>
+<body>
+
+<nav class="navbar navbar-inverse" th:replace="fragments/navbar"></nav>
+
+<p class="lead">Key: <span th:text="${key}">not given</span></p>
+
+<div th:if="${key != null}">
+
+    <ul th:each="value : ${values}">
+        <li><span th:text="${value}"></span></li>
+    </ul>
+</div>
+
+<div th:replace="fragments/links">replace links</div>
+</body>
+</html>
