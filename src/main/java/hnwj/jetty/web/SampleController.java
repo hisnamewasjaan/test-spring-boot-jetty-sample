@@ -51,7 +51,7 @@ public class SampleController {
 				this.helloWorldService.getOtherHelloMessage()) ;
 	}
 
-	@RequestMapping("/")
+	@RequestMapping(value = {"/", "/index"})
 	public String s(@RequestParam(name = "name", defaultValue = "n/a") String name) {
 		return "forward:/sample";
 //		return String.format("forward:/sample?name=%s", name);

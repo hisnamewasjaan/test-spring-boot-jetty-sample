@@ -1,4 +1,4 @@
-package hnwj.jetty;
+package hnwj.config;
 
 import hnwj.jetty.web.HelloSockJsHandler;
 import org.slf4j.Logger;
