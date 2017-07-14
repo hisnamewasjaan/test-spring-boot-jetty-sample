@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/header :: head"></head>
+<body>
+
+<nav class="navbar navbar-inverse" th:replace="fragments/navbar"></nav>
+
+
+<p th:text="'Hellooooooo, ' + ${name} + '!'">Hi</p>
+
+<p>Available Redis keys:</p>
+
+<ul>
+    <li th:each="redisKey : ${redis_keys}">
+        <a th:href="'/redis/key?key=' + ${redisKey}" th:text="${redisKey}"></a>
+    </li>
+</ul>
+
+
+<p th:text="'Requested value \'' + ${redis_value} + '\''">redis value</p>
+
+
+<a href="/redis/message">Send a redis message.... </a>
+
+</body>
+</html>

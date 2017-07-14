@@ -59,6 +59,7 @@ public class SampleController {
 	@RequestMapping("/sample")
 	public String sample(@RequestParam(name = "name", defaultValue = "n/a") String name, Model model) {
 		model.addAttribute("name", name);
+		model.addAttribute("description", description);
 		return "index";
 	}
 }

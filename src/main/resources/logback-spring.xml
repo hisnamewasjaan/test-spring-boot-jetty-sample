@@ -22,11 +22,15 @@
     <springProfile name="default">
 
         <include resource="org/springframework/boot/logging/logback/console-appender.xml" />
+
         <root level="INFO">
+
             <appender-ref ref="CONSOLE" />
             <appender-ref ref="FILE" />
         </root>
 
+        <logger name="redis" level="DEBUG"></logger>
+        <logger name="org.springframework.data.redis" level="DEBUG"></logger>
         <logger name="org.apache.coyote" level="DEBUG"></logger>
         <logger name="org.thymeleaf" level="DEBUG"></logger>
         <logger name="org.apache.tomcat.websocket" level="DEBUG"></logger>
@@ -35,6 +39,27 @@
         <logger name="hnwj" level="INFO"></logger>
     </springProfile>
 
+
+    <!-- add an appender that logs to a redis store -->
+    <springProfile name="redis">
+
+        <appender name="REDIS" class="com.cwbase.logback.RedisAppender">
+            <host>${redis.host}</host>
+            <port>${redis.port}</port>
+            <key>hnwj-app</key>
+        </appender>
+
+        <root level="INFO">
+
+            <appender-ref ref="REDIS" />
+        </root>
+
+        <logger name="redis" level="DEBUG"></logger>
+        <logger name="org.springframework.data.redis" level="DEBUG"></logger>
+        <logger name="org.springframework.data.redis" level="DEBUG"></logger>
+        <logger name="hnwj" level="INFO"></logger>
+
+    </springProfile>
 
 
 </configuration>
