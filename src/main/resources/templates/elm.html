@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/header :: head"></head>
+
+<body>
+
+<nav class="navbar navbar-inverse" th:replace="fragments/navbar"></nav>
+
+<p>Hi Elm</p>
+<div id="main" style="margin: 1em;"></div>
+<script src="/elm-main.js"></script>
+
+<!-- go full screen-->
+<!--<script type="text/javascript">Elm.Main.fullscreen()</script>-->
+
+<!-- embed elm stuff in a node -->
+<script type="text/javascript">
+    var node = document.getElementById('main');
+//    var app = Elm.Main.embed(node);
+    var app = Elm.MainButton.embed(node);
+</script>
+</body>
+</html>

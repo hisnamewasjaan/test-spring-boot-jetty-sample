@@ -2,6 +2,12 @@
 
 A demo web application project powered by spring boot
 
+- redis messaging
+- redis logging
+- elm
+- websockets (sockjs / STOMP)
+- jms
+
 ## Code Example
 
 mvn spring-boot:run -Dspring.profiles.active=default,redis,dev -Dredis.host=localhost -Dredis.port=6379
