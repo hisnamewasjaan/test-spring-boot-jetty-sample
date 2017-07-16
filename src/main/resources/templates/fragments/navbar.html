@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Title</title>
+</head>
+<body>
+
+<nav class="navbar navbar-inverse" th:fragment="navbar">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="#"><img alt="hnwj" href="#"/></a>
+        </div>
+        <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+                <li class="active"><a href="/">Home</a></li>
+
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                       aria-expanded="false">Demos <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="/sample">index</a></li>
+                        <li><a href="/sample/hello">/sample/hello</a></li>
+                        <li><a href="/other/hello">other/hello</a></li>
+                        <li><a href="/sockjs">sockjs</a></li>
+                        <li><a href="/stomp">stomp</a></li>
+                        <li><a href="/greeting">greeting</a></li>
+                        <li><a href="/weather">weather</a></li>
+                        <li><a href="/jms/send">jms/send</a></li>
+                        <li><a href="/redis">redis</a></li>
+                        <li><a href="/elm">elm</a></li>
+                        <li><a href="/caching">caching</a></li>
+                    </ul>
+                </li>
+
+            </ul>
+        </div>
+    </div>
+</nav>
+
+
+</body>
+</html>

@@ -7,20 +7,33 @@
 		<artifactId>spring-boot-starter-parent</artifactId>
 		<version>1.4.0.RELEASE</version>
 	</parent>
-	<artifactId>test-spring-boot-jetty</artifactId>
+	<artifactId>spring-boot-app</artifactId>
 	<groupId>hnwj</groupId>
-	<name>Spring Boot Jetty Sample</name>
-	<description>Spring Boot Jetty Sample</description>
-	<version>1.5</version>
-	<url>http://projects.spring.io/spring-boot/</url>
+	<name>App</name>
+	<description />
+	<version>1.6</version>
+	<url />
 	<organization>
-		<name>Pivotal Software, Inc.</name>
-		<url>http://www.spring.io</url>
+		<name />
+		<url />
 	</organization>
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<maven.compiler.source>1.8</maven.compiler.source>
+		<maven.compiler.target>1.8</maven.compiler.target>
 		<main.basedir>${basedir}/../..</main.basedir>
+
 	</properties>
+
+
+	<pluginRepositories>
+		<pluginRepository>
+			<id>stil4m-releases</id>
+			<name>stil4m-releases</name>
+			<url>https://github.com/stil4m/maven-repository/raw/master/releases/</url>
+		</pluginRepository>
+	</pluginRepositories>
+
 	<dependencies>
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -29,13 +42,45 @@
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web</artifactId>
-			<exclusions>
-				<exclusion>
-					<groupId>org.springframework.boot</groupId>
-					<artifactId>spring-boot-starter-tomcat</artifactId>
-				</exclusion>
-			</exclusions>
+			<!--<exclusions>-->
+				<!--<exclusion>-->
+					<!--<groupId>org.springframework.boot</groupId>-->
+					<!--<artifactId>spring-boot-starter-tomcat</artifactId>-->
+				<!--</exclusion>-->
+			<!--</exclusions>-->
 		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-security</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.webjars</groupId>
+			<artifactId>bootstrap</artifactId>
+			<version>3.3.7</version>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-thymeleaf</artifactId>
+		</dependency>
+		<dependency>
+			<groupId>org.springframework.boot</groupId>
+			<artifactId>spring-boot-starter-data-redis</artifactId>
+		</dependency>
+
+		<dependency>
+			<groupId>com.cwbase</groupId>
+			<artifactId>logback-redis-appender</artifactId>
+			<version>1.1.5</version>
+		</dependency>
+
+		<!-- The org.codehaus.janino:commons-compiler:3.0.6 dependency -->
+		<!-- will be automatically pulled in by Maven's transitivity rules -->
+		<dependency>
+			<groupId>org.codehaus.janino</groupId>
+			<artifactId>janino</artifactId>
+			<version>3.0.6</version>
+		</dependency>
+
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-websocket</artifactId>
@@ -44,14 +89,10 @@
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-messaging</artifactId>
 		</dependency>
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-jetty</artifactId>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework.ws</groupId>
-			<artifactId>spring-ws-core</artifactId>
-		</dependency>
+		<!--<dependency>-->
+			<!--<groupId>org.springframework.boot</groupId>-->
+			<!--<artifactId>spring-boot-starter-jetty</artifactId>-->
+		<!--</dependency>-->
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-jms</artifactId>
@@ -65,6 +106,11 @@
 			<artifactId>spring-boot-starter-test</artifactId>
 			<scope>test</scope>
 		</dependency>
+		<dependency>
+			<groupId>com.google.guava</groupId>
+			<artifactId>guava</artifactId>
+			<version>21.0</version>
+		</dependency>
 	</dependencies>
 	<build>
 		<plugins>
@@ -77,35 +123,27 @@
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>
 				<version>3.5.1</version>
-				<configuration>
-					<source>1.7</source>
-					<target>1.7</target>
-				</configuration>
 			</plugin>
 
-			<!-- tag::wsdl[] -->
+
 			<plugin>
-				<groupId>org.jvnet.jaxb2.maven2</groupId>
-				<artifactId>maven-jaxb2-plugin</artifactId>
-				<version>0.12.3</version>
+				<groupId>nl.stil4m</groupId>
+				<artifactId>elm-maven-plugin</artifactId>
+				<version>2.0.0</version>
 				<executions>
 					<execution>
+						<id>Make Elm Source</id>
+						<phase>generate-sources</phase>
 						<goals>
-							<goal>generate</goal>
+							<goal>make</goal>
 						</goals>
+						<configuration>
+							<inputFiles>src/main/elm/button.elm,src/main/elm/websockets.elm</inputFiles>
+							<outputFile>src/main/webapp/elm-main.js</outputFile>
+						</configuration>
 					</execution>
 				</executions>
-				<configuration>
-					<schemaLanguage>WSDL</schemaLanguage>
-					<generatePackage>weather.wsdl</generatePackage>
-					<schemas>
-						<schema>
-							<url>http://wsf.cdyne.com/WeatherWS/Weather.asmx?wsdl</url>
-						</schema>
-					</schemas>
-				</configuration>
 			</plugin>
-			<!-- end::wsdl[] -->
 
 			<plugin>
 				<groupId>external.atlassian.jgitflow</groupId>

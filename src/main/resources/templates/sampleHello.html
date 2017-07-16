@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/header :: head">
+    <meta charset="UTF-8"/>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    <title>Sample</title>
+</head>
+<body>
+
+
+<nav th:replace="fragments/navbar">replace navbar</nav>
+
+<!--/*@thymesVar id="helloMessage" type="java.lang.String"*/-->
+<p th:text="'Hellooooooo, ' + ${helloMessage} + '!'" >Hi</p>
+
+
+<div th:replace="fragments/links">links</div>
+</body>
+</html>

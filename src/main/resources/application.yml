@@ -1,6 +1,5 @@
 spring:
 logging:
-  level:
-    org.springframework.web: INFO
-    hnwj: INFO
-    org.eclipse.jetty.websocket: INFO
+  file: logs/app.log
+#  level:
+#    org.springframework.web: INFO

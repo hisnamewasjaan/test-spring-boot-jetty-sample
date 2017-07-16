@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/header :: head"></head>
+<body>
+
+<nav class="navbar navbar-inverse" th:replace="fragments/navbar"></nav>
+
+
+<!--/*@thymesVar id="name" type="java.lang.String"*/-->
+<p th:text="'Hellooooooo, ' + ${name} + '!'" >Hi</p>
+<p th:text="'I am ' + ${description}  + '!'"></p>
+
+
+<div th:replace="fragments/links">replace links</div>
+</body>
+</html>
