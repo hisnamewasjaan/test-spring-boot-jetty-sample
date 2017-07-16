@@ -45,3 +45,13 @@ Links:
 ## License
 
 A short snippet describing the license (MIT, Apache, etc.)
+
+## Stuff
+
+* redis
+    * brew install redis
+    * redis-server --protected-mode no
+
+* mongodb
+    * brew install mongodb
+    * mongod --config /usr/local/etc/mongod.conf

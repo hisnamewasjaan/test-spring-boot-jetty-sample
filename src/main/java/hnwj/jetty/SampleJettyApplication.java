@@ -11,12 +11,14 @@ import org.springframework.context.annotation.ComponentScan;
 public class SampleJettyApplication {
 
 
-	private static final Logger log = LoggerFactory.getLogger(SampleJettyApplication.class);
+    private static final Logger log = LoggerFactory.getLogger(SampleJettyApplication.class);
 
-	public static void main(String[] args) throws Exception {
-		log.info("**** MAIN **** SpringBootApplication ****");
-		SpringApplication.run(SampleJettyApplication.class, args);
-	}
 
+    public static void main(String[] args) throws Exception {
+        log.info("**** MAIN **** SpringBootApplication ****");
+        SpringApplication.run(SampleJettyApplication.class, args);
+
+
+    }
 
 }

@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/header :: head"></head>
+<body>
+
+<nav class="navbar navbar-inverse" th:replace="fragments/navbar"></nav>
+
+
+<p>Available MongoDb customers:</p>
+
+<ul>
+    <li th:each="customerId : ${customerIds}">
+        <a th:href="'/mongod/customer?id=' + ${customerId}" th:text="${customerId}"></a>
+    </li>
+</ul>
+
+
+<p th:text="'Requested value \'' + ${customer} + '\''">mongodb value</p>
+
+
+
+</body>
+</html>
