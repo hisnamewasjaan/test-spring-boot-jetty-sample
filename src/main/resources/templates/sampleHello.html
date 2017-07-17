@@ -12,8 +12,20 @@
 
 <!--/*@thymesVar id="helloMessage" type="java.lang.String"*/-->
 <p th:text="'Hellooooooo, ' + ${helloMessage} + '!'" >Hi</p>
+<p th:text="'Model, ' + ${modelStr} + '!'" >Model</p>
+<p th:text="'UserPrincipal name, ' + ${principalName} + '!'" ></p>
+<p th:text="'Authentication name, ' + ${authname} + '!'" ></p>
+<p th:text="'Authentication Authorities, ' + ${authAuthorities} + '!'" ></p>
+<p th:text="'Authentication credentials, ' + ${authCreds} + '!'" ></p>
+<p th:text="'Authentication details, ' + ${authDetails} + '!'" ></p>
+<p th:text="'Cookies, ' + ${cookies} + '!'" ></p>
+<p th:text="'URI, ' + ${uri} + '!'" ></p>
+<p th:text="'Remote Adr, ' + ${remoteAdr} + '!'" ></p>
+<p th:text="'Remote Host, ' + ${remoteHost} + '!'" ></p>
+<p th:text="'Remote Port, ' + ${remotePort} + '!'" ></p>
+<p th:text="'Remote User, ' + ${remoteUser} + '!'" ></p>
+<p th:text="'Principal, ' + ${principal} + '!'" ></p>
 
 
-<div th:replace="fragments/links">links</div>
 </body>
 </html>
