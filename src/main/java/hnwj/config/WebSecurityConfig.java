@@ -38,10 +38,9 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .hasRole("USER")
         ;
 
-        http.antMatcher("/ws/**")
-                .csrf().disable()
-                .httpBasic()
-        ;
+        http.csrf().ignoringAntMatchers("/ws/**")
+                .and()
+                .httpBasic();
     }
 
 
