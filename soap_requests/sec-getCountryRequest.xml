@@ -1,0 +1,16 @@
+<soapenv:Envelope xmlns:soapenv="http://schemas.xmlsoap.org/soap/envelope/"
+                  xmlns:gs="http://spring.io/guides/gs-producing-web-service">
+    <soapenv:Header>
+        <wsse:Security xmlns:wsse="http://schemas.xmlsoap.org/ws/2003/06/secext">
+            <wsse:UsernameToken wsu:Id="sample" xmlns:wsu="http://schemas.xmlsoap.org/ws/2003/06/utility">
+                <wsse:Username>jan</wsse:Username>
+                <wsse:Password Type="wsse:PasswordText">pjan</wsse:Password>
+            </wsse:UsernameToken>
+        </wsse:Security>
+    </soapenv:Header>
+    <soapenv:Body>
+        <gs:getCountryRequest>
+            <gs:name>Spain</gs:name>
+        </gs:getCountryRequest>
+    </soapenv:Body>
+</soapenv:Envelope>

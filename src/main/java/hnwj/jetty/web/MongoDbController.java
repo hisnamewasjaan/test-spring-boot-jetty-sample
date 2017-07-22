@@ -3,6 +3,7 @@ package hnwj.jetty.web;
 import hnwj.data.CustomerRepository;
 import hnwj.jetty.domain.Customer;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Profile;
 import org.springframework.data.mongodb.repository.config.EnableMongoRepositories;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -15,6 +16,7 @@ import java.util.stream.Collectors;
  */
 @Controller
 @EnableMongoRepositories(basePackages = {"hnwj.data"})
+@Profile("mongod")
 public class MongoDbController {
 
     @Autowired
