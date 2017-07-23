@@ -1,0 +1,25 @@
+<SOAP-ENV:Envelope xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/">
+    <SOAP-ENV:Header>
+        <wsse:Security xmlns:wsse="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd"
+                       xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd"
+                       SOAP-ENV:mustUnderstand="1">
+            <wsse:UsernameToken wsu:Id="UsernameToken-47237819A21D4403C415008049637422">
+                <wsse:Username>jan</wsse:Username>
+                <wsse:Password
+                        Type="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-username-token-profile-1.0#PasswordDigest">
+                    J52J+YYpRlaY4Md/kC/g3aYxbus=
+                </wsse:Password>
+                <wsse:Nonce
+                        EncodingType="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-soap-message-security-1.0#Base64Binary">
+                    E5Vcii8mdBogj1dC41o+qw==
+                </wsse:Nonce>
+                <wsu:Created>2017-07-23T10:21:03.742Z</wsu:Created>
+            </wsse:UsernameToken>
+        </wsse:Security>
+    </SOAP-ENV:Header>
+    <SOAP-ENV:Body>
+        <ns2:getCountryRequest xmlns:ns2="http://spring.io/guides/gs-producing-web-service">
+            <ns2:name>Spain</ns2:name>
+        </ns2:getCountryRequest>
+    </SOAP-ENV:Body>
+</SOAP-ENV:Envelope>

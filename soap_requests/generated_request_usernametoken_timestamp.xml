@@ -1,0 +1,29 @@
+<SOAP-ENV:Envelope xmlns:SOAP-ENV="http://schemas.xmlsoap.org/soap/envelope/">
+    <SOAP-ENV:Header>
+        <wsse:Security xmlns:wsse="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-secext-1.0.xsd"
+                       xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd"
+                       SOAP-ENV:mustUnderstand="1">
+            <wsse:UsernameToken wsu:Id="UsernameToken-6F1C05EE04D18907BE15008009296122">
+                <wsse:Username>jan</wsse:Username>
+                <wsse:Password
+                        Type="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-username-token-profile-1.0#PasswordDigest">
+                    MjCRVi9D3Ngs6BSMwHkw+uQr/8I=
+                </wsse:Password>
+                <wsse:Nonce
+                        EncodingType="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-soap-message-security-1.0#Base64Binary">
+                    tglL0GRfqY0uWzths6jRog==
+                </wsse:Nonce>
+                <wsu:Created>2017-07-23T09:08:49.612Z</wsu:Created>
+            </wsse:UsernameToken>
+            <wsu:Timestamp wsu:Id="TS-6F1C05EE04D18907BE15008009296101">
+                <wsu:Created>2017-07-23T09:08:49.610Z</wsu:Created>
+                <wsu:Expires>2017-07-23T09:13:49.610Z</wsu:Expires>
+            </wsu:Timestamp>
+        </wsse:Security>
+    </SOAP-ENV:Header>
+    <SOAP-ENV:Body>
+        <ns2:getCountryRequest xmlns:ns2="http://spring.io/guides/gs-producing-web-service">
+            <ns2:name>Spain</ns2:name>
+        </ns2:getCountryRequest>
+    </SOAP-ENV:Body>
+</SOAP-ENV:Envelope>

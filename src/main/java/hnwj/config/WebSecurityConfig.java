@@ -23,8 +23,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     protected void configure(HttpSecurity http) throws Exception {
         LOG.info("*** configure(HttpSecurity http) ***");
         http.authorizeRequests()
-                .antMatchers("/", "/index", "/sample")
-//                .antMatchers("/", "/index", "/sample", "/ws/**")
+                .antMatchers("/", "/index", "/sample", "/ws/**", "/country/**")
                 .permitAll()
                 .anyRequest()
                 .authenticated()
@@ -38,9 +37,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .hasRole("USER")
         ;
 
-        http.csrf().ignoringAntMatchers("/ws/**")
-                .and()
-                .httpBasic();
+        http.csrf().ignoringAntMatchers("/ws/**");
     }
 
 
