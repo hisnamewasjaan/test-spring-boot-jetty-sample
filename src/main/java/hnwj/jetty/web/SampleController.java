@@ -14,10 +14,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import javax.servlet.http.Cookie;
 import java.security.Principal;
+import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 /**
  * Simple controller with a couple of mappings to '/' and '/other'
@@ -44,10 +45,13 @@ public class SampleController {
         model.addAttribute("helloMessage", this.helloWorldService.getHelloMessage());
         model.addAttribute("modelStr", model.toString());
 
-        List<String> cookies = Stream.of(request.getCookies())
-                .map(cookie -> String.format("", cookie.getName(), cookie.getValue()))
-                .collect(Collectors.toList());
-        model.addAttribute("cookies", cookies);
+        Cookie[] cookies1 = request.getCookies();
+        if (cookies1 != null) {
+            List<String> cookies = Arrays.stream(cookies1)
+                    .map(cookie -> String.format("%s = %s", cookie.getName(), cookie.getValue()))
+                    .collect(Collectors.toList());
+            model.addAttribute("cookies", cookies);
+        }
         model.addAttribute("uri", request.getRequestURI());
         model.addAttribute("remoteAdr", request.getRemoteAddr());
         model.addAttribute("remoteHost", request.getRemoteHost());
@@ -55,12 +59,16 @@ public class SampleController {
         model.addAttribute("remoteUser", request.getRemoteUser());
 
         model.addAttribute("authentication", authentication);
-        model.addAttribute("authname", authentication.getName());
-        model.addAttribute("authAuthorities", authentication.getAuthorities());
-        model.addAttribute("authCreds", authentication.getCredentials());
-        model.addAttribute("authDetails", authentication.getDetails());
-        model.addAttribute("principal", principal.toString());
-        model.addAttribute("principal name", principal.getName());
+        if (authentication != null) {
+            model.addAttribute("authname", authentication.getName());
+            model.addAttribute("authAuthorities", authentication.getAuthorities());
+            model.addAttribute("authCreds", authentication.getCredentials());
+            model.addAttribute("authDetails", authentication.getDetails());
+        }
+        if (principal != null) {
+            model.addAttribute("principal", principal.toString());
+            model.addAttribute("principal name", principal.getName());
+        }
         return "sampleHello";
     }
 

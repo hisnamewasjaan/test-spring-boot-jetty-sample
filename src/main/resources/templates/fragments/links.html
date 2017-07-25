@@ -6,9 +6,11 @@
 
 <div th:fragment="links">
     <ul>
+        <li><a href="/country/spain">/country/spain</a>
+            <p>Shows result of calling a soap web service</p></li>
         <li><a href="/sample">index</a></li>
         <li><a href="/sample/hello">/sample/hello</a>
-            <p>Other mapping returning the result of a service call</p></li>
+        <p>Other mapping returning the result of a service call</p></li>
         <li><a href="/other/hello">other/hello</a>
             <p>Other mapping returning the result of a service call</p></li>
         <li><a href="/sockjs">sockjs</a>
@@ -32,8 +34,9 @@
             <p>Hits an endpoint that will retrieve data from a cache</p></li>
         <li><a href="/to-read">/to-read</a>
             <p>Uses a service with a hystrix protected operation that calls /recommended</p>
-            <a href="/recommended">/recommended</a>
-        </li>
+            <a href="/recommended">/recommended</a></li>
+        <li><a href="/ws/countries.wsdl" target="_blank">Exposed wsdl: /ws/countries.wsdl</a>
+            <p>A SOAP based web service. Opens in new tab..</p></li>
     </ul>
 </div>
 </body>

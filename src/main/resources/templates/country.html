@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/header :: head"></head>
+<body>
+
+<nav class="navbar navbar-inverse" th:replace="fragments/navbar"></nav>
+
+
+<p>Country:</p>
+
+<p th:text="'\'' + ${country} + '\''">country value</p>
+<p th:text="'Name \'' + ${country_name} + '\''">country value</p>
+<p th:text="'Capital \'' + ${country_capital} + '\''">country value</p>
+<p th:text="'Currency \'' + ${country_currency} + '\''">country value</p>
+<p th:text="'Population \'' + ${country_population} + '\''">country value</p>
+
+
+</body>
+</html>
