@@ -1,6 +1,6 @@
 package hnwj.jetty.web;
 
-import hnwj.data.CustomerRepository;
+import hnwj.data.mongod.CustomerRepository;
 import hnwj.jetty.domain.Customer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Profile;

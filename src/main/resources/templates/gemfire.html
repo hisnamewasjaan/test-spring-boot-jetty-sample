@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/header :: head"></head>
+<body>
+
+<nav class="navbar navbar-inverse" th:replace="fragments/navbar"></nav>
+
+
+<p th:text="'Hellooooooo, ' + ${name} + '!'">Hi</p>
+
+<p>Available gemfire Person REST links:</p>
+
+<ul>
+    <li th:each="link : ${links}">
+        <a th:href="${link.getHref()}" th:text="${link.getRel()}" target="_blank"></a>
+    </li>
+</ul>
+
+
+<!--<p th:text="'Requested value \'' + ${redis_value} + '\''">redis value</p>-->
+
+
+<!--<a href="/redis/message">Send a redis message.... </a>-->
+
+</body>
+</html>

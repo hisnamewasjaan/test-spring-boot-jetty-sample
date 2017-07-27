@@ -1,4 +1,4 @@
-package hnwj.data;
+package hnwj.data.mongod;
 
 import hnwj.jetty.domain.Customer;
 import org.springframework.data.mongodb.repository.MongoRepository;
