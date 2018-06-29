@@ -32,6 +32,8 @@
         </root>
 
         <logger name="org.mongodb" level="DEBUG"></logger>
+        <logger name="org.springframework.data" level="DEBUG"></logger>
+        <logger name="org.springframework.dao" level="DEBUG"></logger>
         <logger name="redis" level="DEBUG"></logger>
         <logger name="org.springframework.data.redis" level="DEBUG"></logger>
         <logger name="org.apache.coyote" level="DEBUG"></logger>

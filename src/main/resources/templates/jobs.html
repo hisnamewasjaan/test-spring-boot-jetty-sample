@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/header :: head"></head>
+<body>
+
+<nav class="navbar navbar-inverse" th:replace="fragments/navbar"></nav>
+
+
+<p>Available Jobs:</p>
+
+<ul>
+    <li th:each="job : ${jobs}">
+        <a th:href="'/job/customer?id=' + ${job}" th:text="${job}"></a>
+    </li>
+</ul>
+
+
+<!--<p th:text="'Requested value \'' + ${customer} + '\''">mongodb value</p>-->
+
+
+
+</body>
+</html>
