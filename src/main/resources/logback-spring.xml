@@ -29,8 +29,8 @@
             <appender-ref ref="FILE" />
         </root>
 
-        <logger name="redis" level="DEBUG"></logger>
-        <logger name="org.springframework.data.redis" level="DEBUG"></logger>
+        <logger name="redis" level="INFO"></logger>
+        <logger name="org.springframework.data.redis" level="INFO"></logger>
         <logger name="org.apache.coyote" level="INFO"></logger>
         <logger name="org.thymeleaf" level="INFO"></logger>
         <logger name="org.apache.tomcat.websocket" level="INFO"></logger>

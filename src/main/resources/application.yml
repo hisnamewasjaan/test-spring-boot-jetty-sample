@@ -3,3 +3,8 @@ logging:
   file: logs/app.log
 #  level:
 #    org.springframework.web: INFO
+
+kafka:
+  bootstrap-servers: localhost:9092
+  topic:
+    hellohnwj: hellohnwj.t
