@@ -1,0 +1,29 @@
+version: '3.5'
+services:
+  web:
+#    build: .
+    image: hnwj/hisnamewasjaan
+    command:
+      - java
+      - -Dspring.profiles.active=default,redis,dev
+      - -Dspring.redis.host=redis
+      - -Dspring.redis.port=6379
+      - -jar
+      - /app.jar
+    ports:
+      - target: 8080
+        published: 8081
+    depends_on:
+      - redis
+    networks:
+      - hnwj-net
+  redis:
+    image: "redis:alpine"
+    ports:
+      - target: 6379
+        published: 6379
+    networks:
+      hnwj-net:
+
+networks:
+  hnwj-net:

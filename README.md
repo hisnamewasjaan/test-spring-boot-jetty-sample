@@ -12,7 +12,18 @@ A demo web application project powered by spring boot
 
 mvn spring-boot:run -Dspring.profiles.active=default,redis,dev -Dredis.host=localhost -Dredis.port=6379
 
-Show what the library does as concisely as possible, developers should be able to figure out **how** your project solves their problem by looking at the code example. Make sure the API you are showing off is obvious, and that your code is short and concise.
+or
+
+mvn package
+java -Dspring.profiles.active=default,redis,dev -Dredis.host=localhost -Dredis.port=6379 -jar target/hisnamewasjaan-1.6.jar 
+
+or
+
+docker-compose up
+
+
+Show what the library does as concisely as possible, developers should be able to figure out **how** your project solves their problem by looking at the code example. 
+Make sure the API you are showing off is obvious, and that your code is short and concise.
 
 ## Motivation
 

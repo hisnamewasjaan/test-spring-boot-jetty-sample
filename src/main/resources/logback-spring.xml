@@ -31,10 +31,10 @@
 
         <logger name="redis" level="DEBUG"></logger>
         <logger name="org.springframework.data.redis" level="DEBUG"></logger>
-        <logger name="org.apache.coyote" level="DEBUG"></logger>
-        <logger name="org.thymeleaf" level="DEBUG"></logger>
-        <logger name="org.apache.tomcat.websocket" level="DEBUG"></logger>
-        <logger name="org.apache.activemq.broker" level="DEBUG"></logger>
+        <logger name="org.apache.coyote" level="INFO"></logger>
+        <logger name="org.thymeleaf" level="INFO"></logger>
+        <logger name="org.apache.tomcat.websocket" level="INFO"></logger>
+        <logger name="org.apache.activemq.broker" level="INFO"></logger>
         <logger name="org.springframework.web" level="INFO"></logger>
         <logger name="hnwj" level="INFO"></logger>
     </springProfile>
@@ -55,7 +55,6 @@
         </root>
 
         <logger name="redis" level="DEBUG"></logger>
-        <logger name="org.springframework.data.redis" level="DEBUG"></logger>
         <logger name="org.springframework.data.redis" level="DEBUG"></logger>
         <logger name="hnwj" level="INFO"></logger>
 
