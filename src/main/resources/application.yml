@@ -1,10 +1,28 @@
-spring:
+app:
+  name: 'HNWJ'
+  description: a Spring Boot application, named ${app.name}.
+
+debug: false
+trace: false
+
 logging:
   file: logs/app.log
 #  level:
 #    org.springframework.web: INFO
 
+spring:
+  kafka:
+    bootstrap-servers: localhost:9092
+    client-id: 'hnwj-kafka'
+    consumer:
+      client-id: 'hnwj-kafka'
+  application:
+    name: '**** HNWJ ****'
+
+
+
 kafka:
   bootstrap-servers: localhost:9092
   topic:
-    hellohnwj: hellohnwj.t
+    sag_events: sag_events
+    beskedfordeler_events: beskedfordeler_events

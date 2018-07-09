@@ -44,7 +44,7 @@ public class KafkaProducerConfig {
 
 
     @Bean
-    public KafkaTemplate<String, String> template() {
+    public KafkaTemplate<String, String> kafkaTemplate() {
         LOG.info("kafka template");
         return new KafkaTemplate<>(producerFactory());
     }

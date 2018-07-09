@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head th:replace="fragments/header :: head"></head>
+<body>
+
+<nav class="navbar navbar-inverse" th:replace="fragments/navbar"></nav>
+
+
+<ul>
+    <li th:each="kafkaTopic : ${kafka_topics}">
+        <a th:href="'/kafka/produce?topic=' + ${kafkaTopic}" th:text="${kafkaTopic}"></a>
+    </li>
+</ul>
+
+
+<a href="/kafka/produce">Produce a payload on a kafka topic</a>
+<!--<a href="/kafka/consume">Consume messages from a kafka topic</a>-->
+
+</body>
+</html>
