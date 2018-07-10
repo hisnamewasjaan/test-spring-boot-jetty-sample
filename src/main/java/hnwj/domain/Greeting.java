@@ -1,4 +1,4 @@
-package hnwj.jetty.domain;
+package hnwj.domain;
 
 /**
  */

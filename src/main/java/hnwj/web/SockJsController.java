@@ -1,4 +1,4 @@
-package hnwj.jetty.web;
+package hnwj.web;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -7,11 +7,11 @@ import org.springframework.web.bind.annotation.GetMapping;
 /**
  */
 @Controller
-public class StompController {
+public class SockJsController {
 
-    @GetMapping("/stomp")
+    @GetMapping("/sockjs")
     public String sockjs(Model model) {
-        return "stomp";
+        return "sockjs";
     }
 
 }

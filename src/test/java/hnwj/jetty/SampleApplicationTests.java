@@ -20,7 +20,7 @@ import static org.junit.Assert.assertEquals;
 @RunWith(SpringRunner.class)
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 @DirtiesContext
-public class SampleJettyApplicationTests {
+public class SampleApplicationTests {
 
     @LocalServerPort
     private int port;

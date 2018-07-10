@@ -1,4 +1,4 @@
-package hnwj.jetty.service;
+package hnwj.service;
 
 import org.springframework.jms.annotation.JmsListener;
 import org.springframework.stereotype.Component;

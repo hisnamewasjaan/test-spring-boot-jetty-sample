@@ -1,7 +1,7 @@
-package hnwj.jetty.web;
+package hnwj.web;
 
-import hnwj.jetty.domain.Greeting;
-import hnwj.jetty.domain.HelloMessage;
+import hnwj.domain.Greeting;
+import hnwj.domain.HelloMessage;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.messaging.handler.annotation.MessageMapping;

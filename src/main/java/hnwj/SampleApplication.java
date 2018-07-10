@@ -1,4 +1,4 @@
-package hnwj.jetty;
+package hnwj;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -8,14 +8,14 @@ import org.springframework.context.annotation.ComponentScan;
 
 @SpringBootApplication
 @ComponentScan(basePackages = "hnwj")
-public class SampleJettyApplication {
+public class SampleApplication {
 
 
-	private static final Logger log = LoggerFactory.getLogger(SampleJettyApplication.class);
+	private static final Logger log = LoggerFactory.getLogger(SampleApplication.class);
 
 	public static void main(String[] args) throws Exception {
 		log.info("**** MAIN **** SpringBootApplication ****");
-		SpringApplication.run(SampleJettyApplication.class, args);
+		SpringApplication.run(SampleApplication.class, args);
 	}
 
 
