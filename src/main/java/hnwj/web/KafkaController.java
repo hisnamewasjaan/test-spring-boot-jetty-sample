@@ -37,21 +37,10 @@ public class KafkaController {
     public String kafka(Model model) {
         LOG.info("kafka");
 
-        registry.getListenerContainers().forEach(messageListenerContainer -> LOG.info(String.valueOf(messageListenerContainer.getContainerProperties())));
-        registry.getListenerContainerIds().forEach(id -> LOG.info(String.valueOf(id)));
-
-        MessageListenerContainer listenerContainer = registry.getListenerContainer("manualStart");
-        LOG.info("listenerContainer.isContainerPaused()='{}'", listenerContainer.isContainerPaused());
-        LOG.info("listenerContainer.isRunning()='{}'", listenerContainer.isRunning());
-        listenerContainer.resume();
-        listenerContainer.start();
-        LOG.info("listenerContainer.isContainerPaused()='{}'", listenerContainer.isContainerPaused());
-        LOG.info("listenerContainer.isRunning()='{}'", listenerContainer.isRunning());
-
-        addTopicsToModel(model);
-
+        prepareModel(model);
         return "kafka";
     }
+
 
     @RequestMapping("/kafka/produce")
     public String produce(String topic, Model model) {
@@ -68,8 +57,7 @@ public class KafkaController {
             LOG.info("Intet topic - ingen besked..");
         }
 
-        addTopicsToModel(model);
-
+        prepareModel(model);
         return "kafka";
     }
 
@@ -83,21 +71,29 @@ public class KafkaController {
     }
 
 
-    @RequestMapping("/kafka/consume")
+    @RequestMapping("/kafka/consume/pause")
+    public String pause(String topic, Model model) {
+        LOG.info("pausing consumer...", topic);
+
+        MessageListenerContainer listenerContainer = registry.getListenerContainer("manualStart");
+        logListenerContainer(listenerContainer);
+        listenerContainer.pause();
+        logListenerContainer(listenerContainer);
+
+        prepareModel(model);
+        return "kafka";
+    }
+
+    @RequestMapping("/kafka/consume/resume")
     public String consume(String topic, Model model) {
-        LOG.info("Consuming kafka messages on topic: '{}'...", topic);
+        LOG.info("resuming consumer...", topic);
 
+        MessageListenerContainer listenerContainer = registry.getListenerContainer("manualStart");
+        logListenerContainer(listenerContainer);
+        listenerContainer.resume();
+        logListenerContainer(listenerContainer);
 
-
-        if (!StringUtils.isEmpty(topic)) {
-
-//            model.addAttribute("payload", payload);
-//            model.addAttribute("topic", topic);
-        } else {
-            LOG.info("Intet topic - ingen forbrug..");
-        }
-
-        addTopicsToModel(model);
+        prepareModel(model);
         return "kafka";
     }
 
@@ -118,8 +114,31 @@ public class KafkaController {
 //    }
 
 
+    private void prepareModel(Model model) {
+        addTopicsToModel(model);
+        addListenerContainersToModel(model);
+    }
+
+
     private void addTopicsToModel(Model model) {
         model.addAttribute("kafka_topics", Arrays.asList(TOPIC, TOPIC2));
+    }
+
+    private void addListenerContainersToModel(Model model) {
+        Map map = new HashMap<String, MessageListenerContainer>();
+        registry.getListenerContainerIds().forEach(id -> {
+            MessageListenerContainer listenerContainer = registry.getListenerContainer(id);
+            map.put(id, listenerContainer);
+
+            LOG.info("added key='{}' with listener container=''{}", id, listenerContainer);
+
+        });
+        model.addAttribute("containers", map);
+    }
+
+    private void logListenerContainer(MessageListenerContainer listenerContainer) {
+        LOG.info("listenerContainer.isContainerPaused()='{}'", listenerContainer.isContainerPaused());
+        LOG.info("listenerContainer.isRunning()='{}'", listenerContainer.isRunning());
     }
 
 

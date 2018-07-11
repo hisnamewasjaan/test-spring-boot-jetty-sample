@@ -5,16 +5,32 @@
 
 <nav class="navbar navbar-inverse" th:replace="fragments/navbar"></nav>
 
-
+<h3>Muligheder</h3>
 <ul>
     <li th:each="kafkaTopic : ${kafka_topics}">
-        <a th:href="'/kafka/produce?topic=' + ${kafkaTopic}" th:text="${kafkaTopic}"></a>
+        <a th:href="'/kafka/produce?topic=' + ${kafkaTopic}" th:text="'Produce payload on kafka topic ' + ${kafkaTopic}"></a>
+        <!--<a th:href="'/kafka/produce?topic=' + ${kafkaTopic}" th:text="Produce payload on kafka topic '${kafkaTopic}'"></a>-->
+    </li>
+    <li>
+        <a href="/kafka/produce">Produce payload on a kafka topic</a>
+    </li>
+    <li>
+        <a href="/kafka/consume/pause">Pause consuming from 'manualStart' listener container</a>
+    </li>
+    <li>
+        <a href="/kafka/consume/resume">Resume consuming from 'manualStart' listener container</a>
     </li>
 </ul>
 
 
-<a href="/kafka/produce">Produce a payload on a kafka topic</a>
-<!--<a href="/kafka/consume">Consume messages from a kafka topic</a>-->
+<h3>Listener containers</h3>
+<ul>
+    <li th:each="var : ${containers}">
+        <p th:text="${var.key}"></p>
+        <p th:text="${var.value}"></p>
+    </li>
+</ul>
+
 
 </body>
 </html>
