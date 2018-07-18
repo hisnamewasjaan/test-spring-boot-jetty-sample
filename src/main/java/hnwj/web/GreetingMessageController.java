@@ -16,6 +16,31 @@ public class GreetingMessageController {
 
     final Logger log = LoggerFactory.getLogger(this.getClass());
 
+    /**
+     * Will receive STOMP ping messages.
+     * Replies with 'pong' to the pong topic
+     *
+     * @param message
+     * @return
+     * @throws InterruptedException
+     */
+    @MessageMapping("/ping")
+    @SendTo("/topic/pong")
+    public String ping(String message) throws InterruptedException {
+        log.info(String.format("Received ping message: %s", message));
+
+        return "pong";
+    }
+
+
+    /**
+     * Will receive STOMP hello messages.
+     * Replies to greetings topic
+     *
+     * @param message
+     * @return
+     * @throws InterruptedException
+     */
     @MessageMapping("/hello")
     @SendTo("/topic/greetings")
     public Greeting greeting(HelloMessage message) throws InterruptedException {
@@ -25,6 +50,14 @@ public class GreetingMessageController {
         return new Greeting(1L, String.format("Hello, %s!", message.getName()));
     }
 
+    /**
+     * Will receive STOMP bye messages.
+     * Replies to goodbyes topic
+     *
+     * @param message
+     * @return
+     * @throws InterruptedException
+     */
     @MessageMapping("/bye")
     @SendTo("/topic/goodbyes")
     public Greeting bye(HelloMessage message) throws InterruptedException {

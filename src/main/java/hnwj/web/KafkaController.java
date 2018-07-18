@@ -97,6 +97,14 @@ public class KafkaController {
         return "kafka";
     }
 
+    @RequestMapping("/kafka/consume/stomp")
+    public String stomp(Model model) {
+        LOG.info("kafka stomp");
+
+//        prepareModel(model);
+        return "stompKafkaTopic";
+    }
+
 
 //    private void start(String topic) {
 //        ContainerProperties containerProps = new ContainerProperties("topic1", "topic2");

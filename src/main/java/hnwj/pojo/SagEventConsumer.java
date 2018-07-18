@@ -3,22 +3,23 @@ package hnwj.pojo;
 import hnwj.eventproducer.SagEvent;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.kafka.annotation.KafkaListener;
+import org.springframework.messaging.simp.SimpMessagingTemplate;
+import org.springframework.stereotype.Component;
 
 import java.util.concurrent.CountDownLatch;
 
+@Component
 public class SagEventConsumer {
 
     private static final Logger LOG = LoggerFactory.getLogger(SagEventConsumer.class);
 
+    @Autowired
+    SimpMessagingTemplate simpMessagingTemplate;
+
     private CountDownLatch countDownLatch1 = new CountDownLatch(10);
-    private CountDownLatch countDownLatch2 = new CountDownLatch(10);
 
-    public CountDownLatch getCountDownLatch() {
-        return countDownLatch1;
-    }
-
-    private String asd = "**";
 
     @KafkaListener(
             id = "manualStart",
@@ -37,14 +38,14 @@ public class SagEventConsumer {
         }
         countDownLatch1.countDown();
         LOG.info("Gruppe1: latch count='{}'", countDownLatch1.getCount());
+
+        relayToStompTopic(payload);
     }
 
-//    @KafkaListener(topics = "${kafka.topic.sag-events}")
-//    @KafkaListener(topics = "sag_events", groupId = "Gruppe2", clientIdPrefix = "sageventsmodtager")
-//    public void receive2(String payload) {
-//        LOG.info("Gruppe2: received payload='{}' on topic='{sag_events}'", payload);
-//        countDownLatch2.countDown();
-//        LOG.info("Gruppe2: latch count='{}'", countDownLatch2.getCount());
-//    }
+
+    private void relayToStompTopic(SagEvent message) {
+        LOG.info("Relaying message={}", message);
+        simpMessagingTemplate.convertAndSend("/topic/sag_event", message);
+    }
 
 }

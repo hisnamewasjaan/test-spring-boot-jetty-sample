@@ -12,7 +12,7 @@
     <script src="http://cdn.jsdelivr.net/webjars/bootstrap/3.3.7/js/bootstrap.min.js"
             th:src="@{/webjars/bootstrap/3.3.7/js/bootstrap.min.js}"></script>
 
-    <title>Hello WebSocket over STOMP</title>
+    <title>WebSocket over STOMP</title>
 </head>
 <body onload="disconnect();">
 <noscript>
@@ -40,17 +40,14 @@
 </div>
 
 <div>
-    <p>Pressing connect will create a STOMP wrappered SockJS connection to '/hello_stomp' on the server</p>
-    <p>The STOMP client will subscribe to the topics /topic/greetings and /topic/goodbyes</p>
-    <p>The STOMP client will send messages to /app/hello and /app/bye</p>
+    <p>Pressing connect will create a STOMP wrappered SockJS connection to '/stomp_kafka' on the server</p>
+    <p>The STOMP client will subscribe to the topics <ul><li>/topic/sag_event</li><li>/topic/beskedfordeler_event</li> </ul></p>
     <div>
         <button id="connect" onclick="connect();">Connect</button>
         <button id="disconnect" disabled="disabled" onclick="disconnect();">Disconnect</button>
     </div>
     <div id="conversationDiv">
-        <label>What is your name?</label><input type="text" id="name"/>
-        <button id="sendName" onclick="sendName();">Greet</button>
-        <button id="byeName" onclick="byeName();">Bye</button>
+        <button onclick="ping();">Ping server</button>
         <p id="response"></p>
     </div>
 </div>
@@ -71,16 +68,19 @@
     }
 
     function connect() {
-        var socket = new SockJS('/hello_stomp');
+        var socket = new SockJS('/stomp_kafka');
         stompClient = Stomp.over(socket);
         stompClient.connect({}, function (frame) {
             setConnected(true);
             console.log('Connected: ' + frame);
-            stompClient.subscribe('/topic/greetings', function (greeting) {
-                showGreeting(JSON.parse(greeting.body).content);
+            stompClient.subscribe('/topic/pong', function (pong) {
+                showPong(pong.body);
             });
-            stompClient.subscribe('/topic/goodbyes', function (greeting) {
-                showGreeting(JSON.parse(greeting.body).content);
+            stompClient.subscribe('/topic/sag_event', function (sagEvent) {
+                showSagEvent(JSON.parse(sagEvent.body));
+            });
+            stompClient.subscribe('/topic/beskedfordeler_event', function (beskedfordelerEvent) {
+                showBeskedfordelerEvent(JSON.parse(beskedfordelerEvent.body));
             });
         });
     }
@@ -93,23 +93,29 @@
         console.log("Disconnected")
     }
 
-    function sendName() {
-        var name = document.getElementById('name').value;
-        stompClient.send("/app/hello", {}, JSON.stringify({"name": name}));
+    function ping() {
+        stompClient.send("/app/ping", {}, "ping");
     }
 
-    function byeName() {
-        var name = document.getElementById('name').value;
-        stompClient.send("/app/bye", {}, JSON.stringify({"name": name}));
-    }
 
-    function showGreeting(message) {
+    function showSagEvent(message) {
+        var stringify = JSON.stringify(message);
         var response = document.getElementById('response');
         var p = document.createElement('p');
         p.style.wordWrap = 'break-word';
-        p.appendChild(document.createTextNode(message));
-        response.appendChild(p);
+        p.appendChild(document.createTextNode(stringify));
+        // response.appendChild(p);
+        response.prepend(p);
     }
+
+    function showPong(message) {
+        var response = document.getElementById('response');
+        var p = document.createElement('p');
+        p.appendChild(document.createTextNode(message));
+        // response.appendChild(p);
+        response.prepend(p);
+    }
+
 
 </script>
 
