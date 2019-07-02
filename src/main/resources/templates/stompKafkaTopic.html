@@ -104,7 +104,6 @@
         var p = document.createElement('p');
         p.style.wordWrap = 'break-word';
         p.appendChild(document.createTextNode(stringify));
-        // response.appendChild(p);
         response.prepend(p);
     }
 
@@ -112,7 +111,6 @@
         var response = document.getElementById('response');
         var p = document.createElement('p');
         p.appendChild(document.createTextNode(message));
-        // response.appendChild(p);
         response.prepend(p);
     }
 
